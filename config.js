@@ -1,4 +1,4 @@
-// 📦 中央安全路由設定 (修正版)
+// 📦 中央安全路由設定 (修正版 - CORS 修復)
 (function() {
   // 🌟 修正：Base64 處理函式，支援 URL-safe 格式
   function safeAtob(base64Str) {
@@ -13,11 +13,18 @@
   }
 
   const _URL_ROUTER = {
-    "LKworship": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J5ay12dFV1Y1ZnLVU0clJRallIdms2MzJ0ZVp5eHVmRGtOWF9YMVdSVVhQTUdncy1hZW1WWERfbXY5a0JEanVTd09uQS9leGVj",
+    // 👇 確保你的 GitHub 帳號名稱對應到正確的 GAS 網址
+    "jirehwang": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J5a182dFV1Y1ZnLVU0clJRallIdms2MzJ0ZVp5eHVmRGtOWF9YMVdSVVhQTUdncy1hZW1WWERfbXY5a0JEanVTd09uQS9leGVj",
+    
+    // LKworship 也更新為正確的網址
+    "LKworship": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J5a182dFV1Y1ZnLVU0clJRallIdms2MzJ0ZVp5eHVmRGtOWF9YMVdSVVhQTUdncy1hZW1WWERfbXY5a0JEanVTd09uQS9leGVj",
+    
     "LKCschedule": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J3aVlZLXdLeG1MUkFFYUVfcGJwX2tXeUF6bFJQQ3dZVlFmdm1KVmFtUkp2b3N2dDV3VFRrdndlYmJGQmtQOHJNcVgvZXhlYw==",
     "LKC1958_June_1": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J4NDI2OElrZ3dRbTJFczBnakRITFVfVTlua0pyUk1SMS14emJidHVhcTA4bGVQTGdBUTJ3bkRSckNlSGR5OWpOaGgvZXhlYw==",
     "LKGroup": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J6ZmFXaF9vb1JUR2lqcExWXzdMVkZVSGZtODN2TDZEdll0OXJ0NnplNW1EWGh0d0x2OHlteExYX1BHdURUWHptTndlL2V4ZWM=",
-    "DEFAULT": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J4NDI2OElrZ3dRbTJFczBnakRITFVfVTlua0pyUk1SMS14emJidHVhcTA4bGVQTGdBUTJ3bkRSckNlSGR5OWpOaGgvZXhlYw=="
+    
+    // 👇 DEFAULT 備用路由也更新為正確的網址
+    "DEFAULT": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS9tYWNyb3Mvcy9BS2Z5Y2J5a182dFV1Y1ZnLVU0clJRallIdms2MzJ0ZVp5eHVmRGtOWF9YMVdSVVhQTUdncy1hZW1WWERfbXY5a0JEanVTd09uQS9leGVj"
   };
 
   const _TOKEN_BASE64 = "Q2h1cmNoQXBwLTIwMjY=";
@@ -30,10 +37,11 @@
   window.churchAPI = async function(action, data = {}) {
     if (!window.GAS_URL) return console.error("系統尚未就緒，GAS_URL 為空");
 
-    // 🌟 修正：補全所有排班系統需要的 POST 動作
+    // 🌟 修正：將 getSchedule 等讀取動作也加入 POST 清單，避免跨網域 GET 被擋
     const postActions = [
       "saveSheetData", "savePositions", "saveSchedule", 
-      "parseWithAI", "createGroup", "toggleGroupStatus"
+      "parseWithAI", "createGroup", "toggleGroupStatus",
+      "getSchedule", "getPositions", "getScheduleByDateRange" // 👈 新增這三行
     ];
     const isPost = postActions.includes(action);
     

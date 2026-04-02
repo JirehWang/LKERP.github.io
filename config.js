@@ -2,11 +2,11 @@
 (function() {
   // 1. 定義「專案名稱」與「GAS 網址（Base64）」的對照表
   const _URL_ROUTER = {
-    "LKworship": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS8uLi4vV29yc2hpcF9Vcmw=",
-    "LKCschedule": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS8uLi4vU2NoZWR1bGVfVXJs",
-    "LKERP": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS8uLi4vRVJQX1VybA==",
-    "LKGroup": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS8uLi4vR3JvdXBfVXJs",
-    "DEFAULT": "aHR0cHM6Ly9zY3JpcHQuZ29vZ2xlLmNvbS8uLi4vRGVmYXVsdF9Vcmw="
+    "LKworship": "AKfycbyk_6tUucVg-U4rRQjYHvk632teZyxufDkNX_X1WRUXPMGgsTaemVXD_mv9kBDjuSwOnA",
+    "LKCschedule": "AKfycbwiYYWgKxmLRAEaE_pbp_kWyAzlRPcwYVQfvmJVamRJvosvt5wTTkvwebbFBkP8rMqX",
+    "LKC1958_June_1": "AKfycbx4268IkgwQm2Es0gjDHLU_U9nKJrRMR1-xzbbtuaq08lePLgAQ2wnDRrCeHdy9jNhh",
+    "LKGroup": "AKfycbzfaWh_ooRTGijLV_7lYFUHFm83oL6DvYt9rt6ze5mDXhtwLv8ymxLX_PGuDTHzmNwe",
+    "WhosCar": "AKfycbxOkoaNquIx_V8n_7eS_5ULmoqxPVly_Bezx9_QsmWSzNOcojrCI9Oa6UNd5hOD2euS"
   };
 
   const _TOKEN_BASE64 = "Q2h1cmNoQXBwLTIwMjY=";

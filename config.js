@@ -53,6 +53,7 @@
       const resp = await fetch(window.GAS_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        redirect: 'follow', // 🛑 破解 CORS 關鍵：允許跟隨 GAS 的 302 重新導向 (剛剛漏掉這行了！)
         body: JSON.stringify({ action: action, token: window.AUTH_TOKEN, data: data })
       });
       return await resp.json();
